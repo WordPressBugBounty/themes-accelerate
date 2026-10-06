@@ -4,9 +4,10 @@ Theme URI: https://themegrill.com/themes/accelerate/
 Author: ThemeGrill
 Author URI: https://themegrill.com
 Description: Accelerate is multipurpose WordPress theme made for simplicity and ease of use. This theme is a piece of art that has this premium look and feel which will make your site stand out. Supports all post formats. Accelerate can be used for portfolio, business, blog, personal, travel, corporate, business services or any other kinds of sites. Get free support in https://themegrill.com/contact/ and check the demo at https://themegrilldemos.com/accelerate/
-Version: 1.5.4
-Tested up to: 6.8
-Requires PHP: 5.6
+Version: 1.6.0
+Tested up to: 7.1
+Requires at least: 5.8
+Requires PHP: 7.4
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: one-column, two-columns, left-sidebar, right-sidebar, flexible-header, custom-background, custom-colors, custom-header, custom-logo, custom-menu, featured-images, footer-widgets, post-formats, blog, threaded-comments, theme-options, translation-ready, rtl-language-support, e-commerce
@@ -479,6 +480,21 @@ button:hover {
 	background-color: #33363B;
 }
 
+/* Search block: the generic button margin above made the input 30px taller than the button,
+and Elementor pages drop core's block CSS that lays the row out, so keep that layout here. */
+.wp-block-search__inside-wrapper {
+	display: flex;
+}
+
+.wp-block-search__input {
+	flex-grow: 1;
+}
+
+.wp-block-search__button {
+	margin-bottom: 0;
+	margin-left: 10px;
+}
+
 .previous a,
 .next a {
 	padding: 5px 0;
@@ -627,6 +643,11 @@ body {
 
 .wide #page {
 	max-width: 100%;
+}
+
+/* Full-width #page would cover the custom background painted on body. */
+.wide.custom-background #page {
+	background-color: transparent;
 }
 
 .inner-wrap {
@@ -1305,6 +1326,11 @@ a.slide-next:hover {
 	z-index: 1000;
 }
 
+/* Without a featured image the title is the item's only content: keep it in the flow so the item has a height. */
+.widget_recent_work .recent-work-no-image .recent_work_title {
+	position: static;
+}
+
 .widget_recent_work .recent_work_title .title_box {
 	text-align: center;
 }
@@ -1476,7 +1502,7 @@ a.slide-next:hover {
 .gallery-caption {
 }
 
-/* =WORDPRESS GALLERY SUPPORT
+/* =WordPress GALLERY SUPPORT
 ----------------------------------------------- */
 .gallery {
 	margin: 0 auto 15px;
@@ -1898,7 +1924,9 @@ a.slide-next:hover {
 
 /* =WIDGETS ICON
 ----------------------------------------------- */
-#secondary h3 span:before, .footer-widgets-area h3 span:before {
+#secondary h3 span:before,
+.footer-widgets-area h3 span:before,
+.elementor-widget-container .widget h3 span:before {
 	font-family: FontAwesome;
 	font-style: normal;
 	font-weight: normal;
@@ -2975,13 +3003,15 @@ iframe#wp-custom-header-video {
 }
 
 .woocommerce #respond input#submit, .woocommerce a.button, .woocommerce button.button, .woocommerce input.button,
-.woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt {
+.woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt,
+.wc-block-components-button.contained {
 	background-color: #32ACD5;
 	color: #fff;
 }
 
 .woocommerce #respond input#submit:hover, .woocommerce a.button:hover, .woocommerce button.button:hover, .woocommerce input.button:hover,
-.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover {
+.woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover,
+.wc-block-components-button.contained:hover {
 	background-color: #33363B;
 	color: #fff;
 }
